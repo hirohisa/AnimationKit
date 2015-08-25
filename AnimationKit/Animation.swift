@@ -33,10 +33,10 @@ public class AnimationTask {
     }
 
     public init(duration: NSTimeInterval, closure: Closure) {
-        append(duration: duration, closure: closure)
+        union(duration: duration, closure: closure)
     }
 
-    public func append(#duration: NSTimeInterval, closure: Closure) {
+    public func union(#duration: NSTimeInterval, closure: Closure) {
         closures.append(AnimationClosure(duration: duration, closure: closure))
     }
 
@@ -74,6 +74,19 @@ public class Animation {
         next()
     }
 
+    public func union(#duration: NSTimeInterval, closure: Closure) {
+        if let task = tasks.last {
+            task.union(duration: duration, closure: closure)
+            return
+        }
+
+        fatalError("Animation dosen't have tasks, use `append` or `-->` at first")
+    }
+
+    public func append(#duration: NSTimeInterval, closure: Closure) {
+        tasks.append(AnimationTask(duration: duration, closure: closure))
+    }
+
     func next() {
         if let task = tasks.first {
             task.start { [unowned self] in self.next() }
@@ -102,15 +115,13 @@ extension Animation {
 infix operator --> { associativity left precedence 140 }
 
 public func --> (left: Animation, right: (duration: NSTimeInterval, closure: () -> ())) -> Animation {
-    left.tasks.append(AnimationTask(duration: right.duration, closure: right.closure))
+    left.append(right)
     return left
 }
 
 infix operator ||| { associativity left precedence 140 }
 
 public func ||| (left: Animation, right: (duration: NSTimeInterval, closure: () -> ())) -> Animation {
-    if let task = left.tasks.last {
-        task.append(right)
-    }
+    left.union(right)
     return left
 }
