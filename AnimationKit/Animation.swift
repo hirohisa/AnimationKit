@@ -12,8 +12,10 @@ public typealias Closure = () -> ()
 
 class AnimationClosure: NSObject {
 
+    let duration: NSTimeInterval
     let closure: Closure
-    init(closure: Closure) {
+    init(duration: NSTimeInterval, closure: Closure) {
+        self.duration = duration
         self.closure = closure
     }
 
@@ -21,18 +23,20 @@ class AnimationClosure: NSObject {
 
 public class AnimationTask {
 
-    let duration: NSTimeInterval
     var closures: [AnimationClosure] = []
     var completion: () -> () = {}
     public init(duration: NSTimeInterval, closure: Closure) {
-        self.duration = duration
-        self.closures.append(AnimationClosure(closure: closure))
+        self.append(duration: duration, closure: closure)
+    }
+
+    public func append(#duration: NSTimeInterval, closure: Closure) {
+        self.closures.append(AnimationClosure(duration: duration, closure: closure))
     }
 
     public func start(completion: () -> ()) {
         self.completion = completion
         for c in closures {
-            UIView.animateWithDuration(duration, animations: c.closure, completion: { _ in self._completion(c) })
+            UIView.animateWithDuration(c.duration, animations: c.closure, completion: { _ in self._completion(c) })
         }
     }
 
@@ -86,5 +90,14 @@ infix operator --> { associativity left precedence 140 }
 
 public func --> (left: Animation, right: (duration: NSTimeInterval, closure: () -> ())) -> Animation {
     left.tasks.append(AnimationTask(duration: right.duration, closure: right.closure))
+    return left
+}
+
+infix operator ||| { associativity left precedence 140 }
+
+public func ||| (left: Animation, right: (duration: NSTimeInterval, closure: () -> ())) -> Animation {
+    if let task = left.tasks.last {
+        task.append(right)
+    }
     return left
 }

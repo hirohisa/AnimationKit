@@ -25,7 +25,9 @@ class ViewController: UIViewController {
         let center = submitButton.center
         let animation = Animation("submit")
             --> (0.3, { self.submitButton.center = CGPoint(x: center.x, y: 100) })
+            ||| (0.3, { self.submitButton.alpha = 0 } )
             --> (0.3, { self.submitButton.center = center })
+            ||| (0.3, { self.submitButton.alpha = 1 } )
         animation.start()
     }
 
