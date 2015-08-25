@@ -33,11 +33,11 @@ public class AnimationTask {
     }
 
     public init(duration: NSTimeInterval, closure: Closure) {
-        self.append(duration: duration, closure: closure)
+        append(duration: duration, closure: closure)
     }
 
     public func append(#duration: NSTimeInterval, closure: Closure) {
-        self.closures.append(AnimationClosure(duration: duration, closure: closure))
+        closures.append(AnimationClosure(duration: duration, closure: closure))
     }
 
     public func start(completion: () -> ()) {
@@ -52,7 +52,7 @@ public class AnimationTask {
             closures.removeAtIndex(index)
         }
         if closures.isEmpty {
-            self.completion()
+            completion()
         }
     }
 }
