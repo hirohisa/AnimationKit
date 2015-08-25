@@ -25,6 +25,13 @@ public class AnimationTask {
 
     var closures: [AnimationClosure] = []
     var completion: () -> () = {}
+    var duration: NSTimeInterval {
+        if let closure = closures.sorted({$0.duration < $1.duration}).last {
+            return closure.duration
+        }
+        return 0
+    }
+
     public init(duration: NSTimeInterval, closure: Closure) {
         self.append(duration: duration, closure: closure)
     }
@@ -54,6 +61,10 @@ public class Animation {
 
     public var tasks: [AnimationTask] = []
     public let label: String
+    public var duration: NSTimeInterval {
+        return tasks.reduce(0, combine: { $0 + $1.duration })
+    }
+
     public init(_ label: String) {
         self.label = label
     }
@@ -85,6 +96,8 @@ public class Animation {
 extension Animation {
     static var singleton = [String: Animation]()
 }
+
+// MARK: - Operator
 
 infix operator --> { associativity left precedence 140 }
 
