@@ -9,22 +9,22 @@ Create Animation Stream and add animation block to Animation Stream. Using metho
 
 ```
 let animation = Animation("submit")
-animation --> (duration, {})
-animation.start()
+    animation --> (duration, {})
+    animation.start()
 ```
 
 ### Sequential animation tasks
 `append`, `-->` operator to create a group of sequential animations
 ```
 let animation = Animation("submit")
-    append(0.3, { self.submitButton.center = CGPoint(x: center.x, y: 100) })
-    --> (0.3, { self.submitButton.center = center })
+    animation.append(0.3, { self.submitButton.center = CGPoint(x: center.x, y: 100) })
+    animation --> (0.3, { self.submitButton.center = center })
 ```
 
 ### Concurrent animation tasks
 `union`, `|||` operator to create a group of concurrent animations
 ```
 let animation = Animation("submit")
-    union(0.3, { self.submitButton.center = CGPoint(x: center.x, y: 100) })
-    ||| (0.3, { self.submitButton.alpha = 0 } )
+    animation.union(0.3, { self.submitButton.center = CGPoint(x: center.x, y: 100) })
+    animation ||| (0.3, { self.submitButton.alpha = 0 } )
 ```
