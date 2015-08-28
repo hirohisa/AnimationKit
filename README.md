@@ -5,7 +5,7 @@ It provides you that implements a chain of operations with closure and duration 
 
 ## Usage
 
-Create Animation Stream and add animation block to Animation Stream. Using method `start()` is for beginning animation.
+Create Stream for Animation and add animation blocks to it. Using method `start()` is for beginning stream for Animation.
 
 ```
 let animation = Animation("submit")
