@@ -9,6 +9,7 @@
 import Foundation
 
 public typealias Closure = () -> ()
+public typealias SubscribeClosure = (completed: Bool, next: AnimationTask?) -> ()
 
 class AnimationClosure: NSObject {
 
@@ -87,8 +88,14 @@ public class Animation {
         tasks.append(AnimationTask(duration: duration, closure: closure))
     }
 
+    var _subscribe: SubscribeClosure?
+    public func subscribe(subscribe: SubscribeClosure) {
+        _subscribe = subscribe
+    }
+
     func next() {
         if let task = tasks.first {
+            _subscribe?(completed: false, next: task)
             task.start { [unowned self] in self.next() }
             tasks.removeAtIndex(0)
             return
@@ -102,6 +109,7 @@ public class Animation {
 //    }
 
     func finish() {
+        _subscribe?(completed: true, next: nil)
         Animation.singleton[label] = nil
     }
 }

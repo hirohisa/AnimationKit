@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        submitButton.backgroundColor = UIColor.magentaColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +30,14 @@ class ViewController: UIViewController {
             --> (0.3, { self.submitButton.center = center })
             ||| (0.3, { self.submitButton.alpha = 1 } )
         println(animation.duration)
+
+        let color = submitButton.backgroundColor
+        submitButton.backgroundColor = UIColor.redColor()
+        animation.subscribe { [unowned self] (completed, next) -> () in
+            if completed {
+                self.submitButton.backgroundColor = color
+            }
+        }
         animation.start()
     }
 
