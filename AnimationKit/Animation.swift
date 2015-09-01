@@ -58,6 +58,11 @@ public class AnimationTask {
     }
 }
 
+public enum State {
+    case Ready
+    case Running
+}
+
 public class Animation {
 
     public var tasks: [AnimationTask] = []
@@ -65,6 +70,7 @@ public class Animation {
     public var duration: NSTimeInterval {
         return tasks.reduce(0, combine: { $0 + $1.duration })
     }
+    public var state: State = .Ready
 
     public init(_ label: String) {
         self.label = label
@@ -72,6 +78,7 @@ public class Animation {
 
     public func start() {
         Animation.singleton[label] = self
+        state = .Running
         next()
     }
 
@@ -111,6 +118,7 @@ public class Animation {
     func finish() {
         _subscribe?(completed: true, next: nil)
         Animation.singleton[label] = nil
+        state = .Ready
     }
 }
 
