@@ -38,7 +38,7 @@ class ViewController: UIViewController {
                 self.submitButton.backgroundColor = color
             }
         }
-        animation.start()
+        animation.start(delay: 0.5)
     }
 
 }
