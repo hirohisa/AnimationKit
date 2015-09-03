@@ -77,9 +77,22 @@ public class Animation {
     }
 
     public func start() {
+        start(delay: 0)
+    }
+
+    public func start(#delay: NSTimeInterval) {
         Animation.singleton[label] = self
         state = .Running
-        next()
+
+        if delay == 0 {
+            next()
+            return
+        }
+
+        let after = delay * Double(NSEC_PER_SEC)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(after)), dispatch_get_main_queue()) {
+            self.next()
+        }
     }
 
     public func union(#duration: NSTimeInterval, closure: Closure) {
