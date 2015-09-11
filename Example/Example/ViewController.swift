@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             ||| (0.3, { self.submitButton.alpha = 0 } )
             --> (0.3, { self.submitButton.center = center })
             ||| (0.3, { self.submitButton.alpha = 1 } )
-        println(animation.duration)
+        print(animation.duration)
 
         let color = submitButton.backgroundColor
         submitButton.backgroundColor = UIColor.redColor()

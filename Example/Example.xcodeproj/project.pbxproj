@@ -13,18 +13,7 @@
 		A1ED55631B8796E400F344B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1ED55611B8796E400F344B8 /* Main.storyboard */; };
 		A1ED55651B8796E400F344B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1ED55641B8796E400F344B8 /* Images.xcassets */; };
 		A1ED55681B8796E400F344B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1ED55661B8796E400F344B8 /* LaunchScreen.xib */; };
-		A1ED55741B8796E500F344B8 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED55731B8796E500F344B8 /* ExampleTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A1ED556E1B8796E500F344B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A1ED55501B8796E400F344B8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A1ED55571B8796E400F344B8;
-			remoteInfo = Example;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A17235B91B886D6400522BD3 /* AnimationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AnimationKit.framework; path = "../build/Debug-iphoneos/AnimationKit.framework"; sourceTree = "<group>"; };
@@ -35,7 +24,6 @@
 		A1ED55621B8796E400F344B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1ED55641B8796E400F344B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A1ED55671B8796E400F344B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A1ED556D1B8796E500F344B8 /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1ED55721B8796E500F344B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1ED55731B8796E500F344B8 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,13 +34,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A17235BA1B886D6400522BD3 /* AnimationKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A1ED556A1B8796E500F344B8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				A1ED55581B8796E400F344B8 /* Example.app */,
-				A1ED556D1B8796E500F344B8 /* ExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,39 +116,19 @@
 			productReference = A1ED55581B8796E400F344B8 /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A1ED556C1B8796E500F344B8 /* ExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A1ED557A1B8796E500F344B8 /* Build configuration list for PBXNativeTarget "ExampleTests" */;
-			buildPhases = (
-				A1ED55691B8796E500F344B8 /* Sources */,
-				A1ED556A1B8796E500F344B8 /* Frameworks */,
-				A1ED556B1B8796E500F344B8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A1ED556F1B8796E500F344B8 /* PBXTargetDependency */,
-			);
-			name = ExampleTests;
-			productName = ExampleTests;
-			productReference = A1ED556D1B8796E500F344B8 /* ExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A1ED55501B8796E400F344B8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Hirohisa Kawasaki";
 				TargetAttributes = {
 					A1ED55571B8796E400F344B8 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					A1ED556C1B8796E500F344B8 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = A1ED55571B8796E400F344B8;
 					};
 				};
 			};
@@ -186,7 +146,6 @@
 			projectRoot = "";
 			targets = (
 				A1ED55571B8796E400F344B8 /* Example */,
-				A1ED556C1B8796E500F344B8 /* ExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -202,13 +161,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1ED556B1B8796E500F344B8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -221,23 +173,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1ED55691B8796E500F344B8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A1ED55741B8796E500F344B8 /* ExampleTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A1ED556F1B8796E500F344B8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A1ED55571B8796E400F344B8 /* Example */;
-			targetProxy = A1ED556E1B8796E500F344B8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A1ED55611B8796E400F344B8 /* Main.storyboard */ = {
@@ -280,6 +216,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -349,6 +286,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.hirohisa.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -360,41 +298,8 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.hirohisa.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		A1ED557B1B8796E500F344B8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
-			};
-			name = Debug;
-		};
-		A1ED557C1B8796E500F344B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;
 		};
@@ -415,15 +320,6 @@
 			buildConfigurations = (
 				A1ED55781B8796E500F344B8 /* Debug */,
 				A1ED55791B8796E500F344B8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A1ED557A1B8796E500F344B8 /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A1ED557B1B8796E500F344B8 /* Debug */,
-				A1ED557C1B8796E500F344B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

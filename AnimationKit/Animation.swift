@@ -27,7 +27,7 @@ public class AnimationTask {
     var closures: [AnimationClosure] = []
     var completion: () -> () = {}
     var duration: NSTimeInterval {
-        if let closure = closures.sorted({$0.duration < $1.duration}).last {
+        if let closure = closures.sort({$0.duration < $1.duration}).last {
             return closure.duration
         }
         return 0
@@ -37,7 +37,7 @@ public class AnimationTask {
         union(duration: duration, closure: closure)
     }
 
-    public func union(#duration: NSTimeInterval, closure: Closure) {
+    public func union(duration duration: NSTimeInterval, closure: Closure) {
         closures.append(AnimationClosure(duration: duration, closure: closure))
     }
 
@@ -49,7 +49,7 @@ public class AnimationTask {
     }
 
     func _completion(closure: AnimationClosure) {
-        if let index = find(closures, closure) {
+        if let index = closures.indexOf(closure) {
             closures.removeAtIndex(index)
         }
         if closures.isEmpty {
@@ -80,7 +80,7 @@ public class Animation {
         start(delay: 0)
     }
 
-    public func start(#delay: NSTimeInterval) {
+    public func start(delay delay: NSTimeInterval) {
         Animation.singleton[label] = self
         state = .Running
 
@@ -95,7 +95,7 @@ public class Animation {
         }
     }
 
-    public func union(#duration: NSTimeInterval, closure: Closure) {
+    public func union(duration duration: NSTimeInterval, closure: Closure) {
         if let task = tasks.last {
             task.union(duration: duration, closure: closure)
             return
@@ -104,7 +104,7 @@ public class Animation {
         fatalError("Animation dosen't have tasks, use `append` or `-->` at first")
     }
 
-    public func append(#duration: NSTimeInterval, closure: Closure) {
+    public func append(duration duration: NSTimeInterval, closure: Closure) {
         tasks.append(AnimationTask(duration: duration, closure: closure))
     }
 
