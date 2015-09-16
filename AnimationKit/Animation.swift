@@ -81,7 +81,7 @@ public class Animation {
     }
 
     public func start(delay delay: NSTimeInterval) {
-        Animation.singleton[label] = self
+        Queue.add(self, key: label)
         state = .Running
 
         if delay == 0 {
@@ -125,18 +125,39 @@ public class Animation {
     }
 
 //    deinit {
-//        println(__FUNCTION__)
+//        print(__FUNCTION__)
 //    }
 
     func finish() {
         _subscribe?(completed: true, next: nil)
-        Animation.singleton[label] = nil
+        Queue.remove(label)
         state = .Ready
     }
 }
 
-extension Animation {
-    static var singleton = [String: Animation]()
+class Queue {
+    private static let singleton = Queue()
+    private(set) var animations = [String: [Animation]]()
+
+    class func remove(key: String) {
+        singleton.remove(key)
+    }
+
+    func remove(key: String) {
+        animations[key] = nil
+    }
+
+    class func add(animation: Animation, key: String) {
+        singleton.add(animation, key: key)
+    }
+
+    func add(animation: Animation, key: String) {
+        if animations[key] == nil {
+            animations[key] = [Animation]()
+        }
+
+        animations[key]?.append(animation)
+    }
 }
 
 // MARK: - Operator
